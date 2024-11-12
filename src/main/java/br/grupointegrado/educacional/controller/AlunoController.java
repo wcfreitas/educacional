@@ -1,12 +1,36 @@
 package br.grupointegrado.educacional.controller;
 
-import br.grupointegrado.educacional.EducacionalApplication;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import br.grupointegrado.educacional.model.Aluno;
+import br.grupointegrado.educacional.repository.AlunoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@SpringBootApplication
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/alunos")
 public class AlunoController {
-    public static void main(String[] args) {
-        SpringApplication.run(EducacionalApplication.class, args);
+
+    @Autowired
+    private AlunoRepository repository;
+
+    @GetMapping
+    public ResponseEntity<List<Aluno>>{
+        return ResponseEntity.ok(this.repository.findAll());
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Aluno> findById(@PathVariable Integer id) {
+        Aluno aluno = this.repository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Aluno não encontrado"));
+
+        return ResponseEntity.ok(aluno);
+    }
+
+
+
 }
