@@ -1,6 +1,6 @@
-create table cursos(
-id int not null primary key auto_increment,
-nome varchar(100),
-codigo varchar(20),
-carga_horaria int
-)
+CREATE TABLE cursos (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(100) NOT NULL,
+    codigo VARCHAR(20) NOT NULL UNIQUE,
+    carga_horaria INT NOT NULL
+);

@@ -1,7 +1,7 @@
-create table alunos(
-    id int not null primary key auto_increment,
-    nome varchar(100),
-    email varchar(100),
-    matricula varchar(20),
-    data_nascimento date
+CREATE TABLE alunos (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    matricula VARCHAR(20) NOT NULL UNIQUE,
+    data_nascimento DATE NOT NULL
 );

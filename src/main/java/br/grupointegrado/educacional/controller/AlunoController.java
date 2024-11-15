@@ -19,18 +19,15 @@ public class AlunoController {
     private AlunoRepository repository;
 
     @GetMapping
-    public ResponseEntity<List<Aluno>>{
-        return ResponseEntity.ok(this.repository.findAll());
+    public ResponseEntity<List<Aluno>> findAll() {
+        List<Aluno> alunos = repository.findAll();
+        return ResponseEntity.ok(alunos);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Aluno> findById(@PathVariable Integer id) {
-        Aluno aluno = this.repository.findById(id)
+        Aluno aluno = repository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Aluno não encontrado"));
-
         return ResponseEntity.ok(aluno);
     }
-
-
-
 }
