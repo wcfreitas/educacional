@@ -3,6 +3,7 @@ package br.grupointegrado.educacional.model;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 
 @Entity
@@ -17,7 +18,7 @@ public class Aluno {
     @Column
     private String email;
     @Column
-    private String maricula;
+    private String matricula;
     @Column
     private LocalDate data_nascimento;
 
@@ -45,12 +46,12 @@ public class Aluno {
         this.email = email;
     }
 
-    public String getMaricula() {
-        return maricula;
+    public String getMatricula() {
+        return matricula;
     }
 
-    public void setMaricula(String maricula) {
-        this.maricula = maricula;
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
     }
 
     public LocalDate getData_nascimento() {
@@ -60,4 +61,10 @@ public class Aluno {
     public void setData_nascimento(LocalDate data_nascimento) {
         this.data_nascimento = data_nascimento;
     }
+
+
+
+
+
+
 }
